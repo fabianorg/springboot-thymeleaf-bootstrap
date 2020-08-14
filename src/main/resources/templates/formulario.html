@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Formulario</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+    .formulario {
+    background-color: rgba(86, 61, 124, .15);
+     border: 1px solid rgba(86, 61, 124, .2);
+    }
+
+    .themed-grid-col {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+    }
+
+    .form {
+        background-color: #6c757d;
+    }
+
+    .col-4 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 20%;
+    }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>Formulario de Contrato</h2>
+    </div>
+
+        <h2 class="mt-4">Lista de Contratos</h2>
+        <p>Lista de todos os contratos cadastrados no periodo de 2020.</p>
+
+    <div th:each="contrato : ${contratos}">
+        <div class="row mb-3">
+            <div class="col-4 themed-grid-col"><span th:text="${contrato.nome}"></span></div>
+            <div class="col-4 themed-grid-col"><span th:text="${contrato.numero}"></span></div>
+            <div class="col-4 themed-grid-col"><span th:text="${contrato.anexo}"></span></div>
+            <div class="col-4 themed-grid-col">
+                    <a class="nav-link" href="#">
+                        Excluir
+                    </a>
+                <a th:href="${#mvc.url('CC#deletarContrato').arg(0, contrato.id).build()}">teste</a>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <hr class="mb-4">
+
+    <div class="row">
+        <div class="formulario">
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3" style="width: 1200px;  background-color: #17a2b;">Dados do Contrato</h4>
+
+            <form method="post" class="form" novalidate style="width: 1200px;  background-color: #f1f1f1;">
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="112" required>
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="numero">Numero</label>
+                        <input type="text" class="form-control" name="numero" id="numero" placeholder="1234 Main St" required>
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="anexo">Anexo</label>
+                        <input type="text" class="form-control" name="anexo" id="anexo" placeholder="1234 Main St" required>
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Salvar Dados</button>
+                <hr class="mb-4">
+                <hr/>
+            </form>
+        </div>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2020 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="form-validation.js"></script></body>
+</html>
